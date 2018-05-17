@@ -1,0 +1,20 @@
+.scoreboard{
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    border: 2px solid #17331F;
+    overflow: hidden;
+}
+
+.team{
+    float: left;
+    width: 45%;
+}
+
+.team-boston{
+    color: green;
+}
+
+.team-cavs{
+    color: maroon;
+}
