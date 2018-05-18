@@ -1,6 +1,35 @@
 // React is a bunch of legos.  The legos are called componets.
 // A component is a fancy name for a class-like UI thing.
 
+const Counter = React.createClass({
+    getInitialState: function(){
+        return{
+            score: 0
+        }
+    },
+
+    onAddPoint : function(){
+        this.setState({
+            score: this.state.score + 1
+        });
+    },
+    onSubPoint : function(){
+        this.setState({
+            score: this.state.score - 1
+        })
+    },
+
+    render: function(){
+        return(
+            <div className="counter">
+                <button className="btn btn-success" onClick={(e)=>this.onAddPoint(e)}>+</button>
+                <div className="team-score">{this.state.score}</div>
+                <button className="btn btn-danger" onClick={(e)=>this.onSubPoint(e)}>-</button>
+            </div>
+        );
+    }
+})
+
 // React components are automatically passed 1 param. PROPS
 function Team(props){
     console.log(props);
@@ -9,11 +38,7 @@ function Team(props){
             <div className="team">
                 <h3>{props.teamName}</h3>
             </div>
-            <div>
-                <button className="btn btn-success" >+</button>
-                <div className="team-score">0</div>
-                <button className="btn btn-danger" >-</button>
-            </div>
+            <Counter />
         </div>
     );
 }
