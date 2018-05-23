@@ -13,7 +13,9 @@ class SearchBar extends Component{
         event.preventDefault();
         const searchTerm = event.target[0].value;
         
-        this.props.searchFunction(searchTerm);
+        // this.props.searchFunction(searchTerm);
+        // this.props.searchFunction.push(`/search/${searchTerm}`)
+        this.props.history.push(`/search/${searchTerm}`)
     }
 
     render(){

@@ -6,6 +6,11 @@ import $ from "jquery";
 import Poster from "./Poster.js";
 import SearchBar from "./SearchBar.js";
 import About from "./About.js";
+import MovieSearch from "./MovieSearch.js";
+import SingleMovie from "./SingleMovie";
+import BootstrapNavBar from "./BootstrapNavBar";
+import Login from './Login';
+import Register from './Register';
 
 // add react router
 // BrowserRouter as Router in the MAIN component in our app now
@@ -60,10 +65,15 @@ class App extends Component {
     });
   }
 
+  // componentWillReceiveProps(newProps){
+  //   console.log(newProps);
+  //   const newSearchTerm = newProps.match.params.searchTerm;
+  // }
+
   render() {
     const posters = this.state.moviePosters.map((poster,index)=>{
       const imagePath = `http://image.tmdb.org/t/p/w300${poster.poster_path}`;
-      return(<Poster movie={poster} poster={imagePath}/>)
+      return(<Poster name="Snoppy" movie={poster} poster1={imagePath} />)
     });
 
     return (
@@ -71,28 +81,37 @@ class App extends Component {
       <Router>
         <div className="App">
 
-          <ul>
-            {/* Have to use Link */}
-            <li><Link to="/home"> Home  </Link></li>
+          {/* <ul>
+            Have to use Link
+            <li><Link to="/search"> Search  </Link></li>
             <li><Link to="/"> Home  </Link></li>
             <li><Link to="/about"> About </Link></li>
-          </ul>
+          </ul> */}
 
-          <header className="App-header">
+          {/* <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            {/* <img src={lebron} className="App-logo" /> */}
+            <img src={lebron} className="App-logo" />
             <h1 className="App-title">Welcome to React</h1>
-          </header>
+          </header> */}
 
-          <SearchBar searchFunction={this.newUserSearch}/>
+          {/* <SearchBar searchFunction={this.newUserSearch}/> */}
+
+          <Route path="/" component={BootstrapNavBar} />
+          <Route path="/" component={SearchBar} />
           <Route path="/about" render={About} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path = "/register" component={Register} />
           {/* You don't always have to give it a component
           You can give it a callback which can render components*/}
  
           {/* Exact to specify exactly "/" instead any URL has a "/" */}
           <Route exact path="/" render={()=>{
-            return({posters})
+            return(<div>{posters}</div>)
           }}/>
+
+          <Route path="/search/:movieId" component={MovieSearch} />
+
+          <Route path="/movie/:movieId" component={SingleMovie} />
 
         </div>
       </Router>
