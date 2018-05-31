@@ -24,6 +24,8 @@ class App extends Component {
           <div className="container main">
             <h1>Main App</h1>
 
+          {/* <Route exact path="/" component={Home}/> */}
+
           <Route exact path="/" render={()=>{return(<Home />)}}/>
           <Route path="/about" render={()=>{return(<About />)}}/>
 				  <Route path="/atlanta" render={()=>{return(<Atlanta />)}}/>
