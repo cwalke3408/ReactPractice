@@ -8,6 +8,6 @@
 //            value for state, in case it's not set 
 //      2.  info that came from the dispatcher 
 export default function(state = "Home Page Text", action){
-
+    console.log("Running the Reducer");
     return state;
 }
